@@ -1,14 +1,16 @@
-secret_number = 2
-guess = int
+import random
+guess = 0
+def guess(x):
+    random_number = random.randint(1, x)
+# Used global to acces variable outside of function to try it out. Pretty raaaaaad
+    global guess
+    while guess != random_number:
+        guess = int(input(f"Guess a number between 1 and {x}: "))
+        if  guess < random_number:
+            print("Sorry, guess again. Too low.")
+        elif guess > random_number:
+            print("Sorry, guess again. Too high.")
+    print("Yay, congrats. You have guessed the number {random_number} correctly!")
 
-while guess != secret_number:
-    guess = int(input("Enter guess: "))
-    if guess == secret_number:
-        print(f"Yay! Youn guessed it! The secret number is {secret_number}")
-    else:
-        print("Fuck! You got it all weong mate!")
-        if guess <= secret_number:
-            print("Too low dude!")
-        else:
-            print("Too high bro!")
-        print("Try again!")
+guess(10)
+
